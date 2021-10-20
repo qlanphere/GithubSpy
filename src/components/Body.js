@@ -11,22 +11,17 @@ const Body = () => {
         if (!username) {
             return
         }
-            fetch(`https://api.github.com/users/${username}/repos`)
-                .then(data => data.json())
-                .then(data =>  {
-                    console.log(data)
-                    setRepos(data)
-                })
-                
-
-                .catch(error => console.error(error))
+        fetch(`https://api.github.com/users/${username}/repos`)
+            .then(data => data.json())
+            .then(data => setRepos(data))
+            .catch(error => console.error(error))
     }, [username])
 
     return (
         <>
             <Context.Provider value={{ username, setUsername }}>
                 <h1>{`${username}'s repositories'`}</h1>
-                <div id="repos">{repos.map(repos => <Repo name={repos.name} language={repos.language} stars={repos.stargazers_count} updated={repos.updated_at} key = {repos.id} />)}</div>
+                <div id="repos">{repos.map(repos => <Repo name={repos.name} language={repos.language} stars={repos.stargazers_count} updated={repos.updated_at} key={repos.id} />)}</div>
             </Context.Provider>
         </>
     )
