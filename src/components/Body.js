@@ -1,41 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from './Context'
 import Repo from './Repo'
-import Screen, { render } from 'react-dom'
 
 const Body = () => {
 
     const [repos, setRepos] = useState([])
-    const {username, setUsername} = useContext(Context)
-    const [displayRepos, setDisplayRepos] = useState([])
-
-    console.log(username)
+    const { username, setUsername } = useContext(Context)
 
     useEffect(() => {
-
-        const fetchRepos = async () => {
-            try {
-                let get = await fetch(`https://api.github.com/users/${username}/repos`)
-                const repoData = await get.json()
-                console.log(repoData)
-                setRepos(repoData)
-
-                for (let i = 0; i < repos.length; i++) {
-                    let repo = (<Repo name = {repos[i].name} language = {repos[i].language} stars = {repos[i].stargazers_count} updated = {repos[i].updated_at}/>)
-                    setDisplayRepos(prev => [...prev, repo])
-                }
-            } catch {
-
-            }
+        if (!username) {
+            return
         }
-        fetchRepos()
+            fetch(`https://api.github.com/users/${username}/repos`)
+                .then(data => data.json())
+                .then(data =>  {
+                    console.log(data)
+                    setRepos(data)
+                })
+                
+
+                .catch(error => console.error(error))
     }, [username])
 
     return (
         <>
             <Context.Provider value={{ username, setUsername }}>
                 <h1>{`${username}'s repositories'`}</h1>
-                <div id = "repos">{displayRepos}</div>
+                <div id="repos">{repos.map(repos => <Repo name={repos.name} language={repos.language} stars={repos.stargazers_count} updated={repos.updated_at} key = {repos.id} />)}</div>
             </Context.Provider>
         </>
     )

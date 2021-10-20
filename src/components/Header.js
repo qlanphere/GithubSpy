@@ -1,14 +1,15 @@
 import React, {useContext, useState} from 'react'
-import {Navbar, Nav, NavDropdown, Form, Button, FormControl} from 'react-bootstrap'
+import {Navbar, Nav, Form, Button, FormControl} from 'react-bootstrap'
 import { Context } from './Context'
 
 const Header = () => {
 
-    const {username, setUsername} = useContext(Context)
+    const {setUsername} = useContext(Context)
     const [search, setSearch] = useState('')
 
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         setUsername(search)
     }
 
