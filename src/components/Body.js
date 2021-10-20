@@ -7,6 +7,7 @@ const Body = () => {
 
     const [repos, setRepos] = useState([])
     const {username, setUsername} = useContext(Context)
+    const [displayRepos, setDisplayRepos] = useState([])
 
     console.log(username)
 
@@ -20,8 +21,8 @@ const Body = () => {
                 setRepos(repoData)
 
                 for (let i = 0; i < repos.length; i++) {
-                    const div = document.getElementById('repos')
-                    div.appendChild(<Repo name = {repos[i].name} language = {repos[i].language} stars = {repos[i].stargzers_count} updated = {repos[i].updated_at}/>)
+                    let repo = (<Repo name = {repos[i].name} language = {repos[i].language} stars = {repos[i].stargazers_count} updated = {repos[i].updated_at}/>)
+                    setDisplayRepos(prev => [...prev, repo])
                 }
             } catch {
 
@@ -34,7 +35,7 @@ const Body = () => {
         <>
             <Context.Provider value={{ username, setUsername }}>
                 <h1>{`${username}'s repositories'`}</h1>
-                <div id = "repos"></div>
+                <div id = "repos">{displayRepos}</div>
             </Context.Provider>
         </>
     )
