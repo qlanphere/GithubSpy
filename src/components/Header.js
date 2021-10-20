@@ -19,8 +19,8 @@ const Header = () => {
 
     return (
         <div>
-            <Navbar bg="light" expand="lg" className = "navmargin">
-  <Navbar.Brand href="#">Github Spy</Navbar.Brand>
+            <Navbar bg="dark"  expand="lg" className = "navmargin">
+  <Navbar.Brand className="text-light" href="#">Github Spy</Navbar.Brand>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -37,7 +37,7 @@ const Header = () => {
         aria-label="Search"
         onChange = {updateInput}
       />
-      <Button type = "submit" variant="outline-success">Search</Button>
+      <Button className="bg-light text-dark border border-white " type = "submit" variant="outline-success">Search</Button>
     </Form>
   </Navbar.Collapse>
 </Navbar>

@@ -20,7 +20,7 @@ const Body = () => {
     return (
         <>
             <Context.Provider value={{ username, setUsername }}>
-                <h1>{`${username}'s repositories'`}</h1>
+                <h1 className='title'>{`${username} repositories`}</h1>
                 <div id="repos">{repos.map(repos => <Repo name={repos.name} language={repos.language} stars={repos.stargazers_count} updated={repos.updated_at} key={repos.id} />)}</div>
             </Context.Provider>
         </>
