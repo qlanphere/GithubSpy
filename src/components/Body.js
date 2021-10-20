@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from './Context'
 import Repo from './Repo'
-import Screen from 'react-dom'
+import Screen, { render } from 'react-dom'
 
 const Body = () => {
 

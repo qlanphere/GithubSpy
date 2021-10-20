@@ -28,7 +28,7 @@ const Header = () => {
       navbarScroll
     >
     </Nav>
-    <Form className="d-flex">
+    <Form className="d-flex" onSubmit = {handleSubmit}>
       <FormControl
         type="search"
         placeholder="Search"
@@ -36,7 +36,7 @@ const Header = () => {
         aria-label="Search"
         onChange = {updateInput}
       />
-      <Button onClick = {handleSubmit} variant="outline-success">Search</Button>
+      <Button type = "submit" variant="outline-success">Search</Button>
     </Form>
   </Navbar.Collapse>
 </Navbar>
