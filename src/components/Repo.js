@@ -6,7 +6,7 @@ const Repo = (props) => {
             <hr></hr>
             <h3>{props.name}</h3>
             <div className="repo_format">
-            <p>{props.language}</p>
+            <p>Language: {props.language}</p>
             <p>⭐: {props.stars}</p>
             <p>Last Updated: {props.updated}</p>
             </div>

@@ -21,7 +21,7 @@ const Body = () => {
         <>
             <Context.Provider value={{ username, setUsername }}>
                 <h1 className='title'>{`${username} repositories`}</h1>
-                <div id="repos">{repos.map(repos => <Repo name={repos.name} language={repos.language} stars={repos.stargazers_count} updated={repos.updated_at} key={repos.id} />)}</div>
+                <div id="repos" className = "align">{repos.map(repos => <Repo name={repos.name} language={repos.language ? repos.language:'none'} stars={repos.stargazers_count} updated={repos.updated_at} key={repos.id} />)}</div>
             </Context.Provider>
         </>
     )
