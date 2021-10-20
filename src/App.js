@@ -1,14 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState} from 'react'
 import Header from './components/Header';
 import Repo from './components/Repo';
+import Body from './components/Body';
+import { Context } from './components/Context';
 
 function App() {
+
+  const [username, setUsername] = useState('')
+
   return (
     <div className="App">
+      <Context.Provider value = {{username, setUsername}}>
       <Header />
-      <Repo />
+      <Body />
+      </Context.Provider>
     </div>
   );
 }
